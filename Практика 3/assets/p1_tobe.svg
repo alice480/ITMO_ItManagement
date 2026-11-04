@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2698" height="1090" viewBox="0 0 2698 1090">
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#475569"/></marker></defs>
+<rect width="100%" height="100%" fill="white"/>
+<text x="28" y="35" font-family="DejaVu Sans,Arial,sans-serif" font-size="25" font-weight="bold" fill="#17283c">P1 · TO-BE · Выпуск с общим реестром; инцидент без агента</text>
+<text x="28" y="62" font-family="DejaVu Sans,Arial,sans-serif" font-size="15" fill="#475569">BPMN 2.0 · задачи распределены по ролям · AS-IS отражает состояние после событий</text>
+<rect x="28" y="80" width="18" height="18" rx="3" fill="#e5f3e8" stroke="#27753d"/><text x="55" y="94" font-family="DejaVu Sans,Arial" font-size="15">Сохраняется</text>
+<rect x="358" y="80" width="18" height="18" rx="3" fill="#fde9e7" stroke="#b13b36"/><text x="385" y="94" font-family="DejaVu Sans,Arial" font-size="15">Исключается из данного пути</text>
+<rect x="688" y="80" width="18" height="18" rx="3" fill="#e7f0fc" stroke="#2864a6"/><text x="715" y="94" font-family="DejaVu Sans,Arial" font-size="15">Добавляется / изменяется</text>
+<rect x="20" y="120" width="2658" height="880" fill="#fff" stroke="#334155" stroke-width="2"/>
+<text transform="translate(43,560.0) rotate(-90)" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="20" font-weight="bold">Lamoda</text>
+<rect x="55" y="120" width="2623" height="176" fill="none" stroke="#94a3b8"/>
+<text x="130" y="196.5" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="16" font-weight="bold" fill="#334155">Продукт / Release</text>
+<text x="130" y="219.5" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="16" font-weight="bold" fill="#334155">owner</text>
+<rect x="55" y="296" width="2623" height="176" fill="none" stroke="#94a3b8"/>
+<text x="130" y="372.5" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="16" font-weight="bold" fill="#334155">Разработка / QA /</text>
+<text x="130" y="395.5" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="16" font-weight="bold" fill="#334155">CI</text>
+<rect x="55" y="472" width="2623" height="176" fill="none" stroke="#94a3b8"/>
+<text x="130" y="548.5" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="16" font-weight="bold" fill="#334155">Агент</text>
+<text x="130" y="571.5" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="16" font-weight="bold" fill="#334155">сопровождения</text>
+<rect x="55" y="648" width="2623" height="176" fill="none" stroke="#94a3b8"/>
+<text x="130" y="724.5" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="16" font-weight="bold" fill="#334155">SRE / дежурный</text>
+<text x="130" y="747.5" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="16" font-weight="bold" fill="#334155">инженер</text>
+<rect x="55" y="824" width="2623" height="176" fill="none" stroke="#94a3b8"/>
+<text x="130" y="889.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="16" font-weight="bold" fill="#334155">Incident</text>
+<text x="130" y="912.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="16" font-weight="bold" fill="#334155">Commander /</text>
+<text x="130" y="935.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="16" font-weight="bold" fill="#334155">Operations</text>
+<polyline points="268,208.0 335,208.0" fill="none" stroke="#475569" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="511,208.0 533.0,208.0 533.0,384.0 555,384.0" fill="none" stroke="#475569" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="731,384.0 775,384.0" fill="none" stroke="#475569" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="951,384.0 995,384.0" fill="none" stroke="#475569" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="1019,360 1019,249" fill="none" stroke="#475569" stroke-width="1.7" marker-end="url(#arrow)"/>
+<rect x="1022.0" y="288.5" width="44" height="20" rx="3" fill="white"/><text x="1044.0" y="303.5" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" fill="#334155">Нет</text>
+<polyline points="1161,208.0 1200,208.0" fill="none" stroke="#475569" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="1043,384.0 1129.0,384.0 1129.0,736.0 1215,736.0" fill="none" stroke="#475569" stroke-width="1.7" marker-end="url(#arrow)"/>
+<rect x="1064.0" y="360.0" width="44" height="20" rx="3" fill="white"/><text x="1086.0" y="375.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" fill="#334155">Да</text>
+<polyline points="1391,736.0 1430,736.0" fill="none" stroke="#475569" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="1454,712 1454,208 1620,208" fill="none" stroke="#475569" stroke-width="1.7" marker-end="url(#arrow)"/>
+<rect x="1457.0" y="444.0" width="44" height="20" rx="3" fill="white"/><text x="1479.0" y="459.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" fill="#334155">Нет</text>
+<polyline points="1796,208.0 1850,208.0" fill="none" stroke="#475569" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="1478,736.0 1620,736.0" fill="none" stroke="#475569" stroke-width="1.7" marker-end="url(#arrow)"/>
+<rect x="1527.0" y="712.0" width="44" height="20" rx="3" fill="white"/><text x="1549.0" y="727.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" fill="#334155">Да</text>
+<polyline points="1796,736.0 1823.0,736.0 1823.0,912.0 1850,912.0" fill="none" stroke="#475569" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="2026,912.0 2053.0,912.0 2053.0,736.0 2080,736.0" fill="none" stroke="#475569" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="2256,736.0 2283.0,736.0 2283.0,912.0 2310,912.0" fill="none" stroke="#475569" stroke-width="1.7" marker-end="url(#arrow)"/>
+<polyline points="2486,912.0 2530,912.0" fill="none" stroke="#475569" stroke-width="1.7" marker-end="url(#arrow)"/>
+<circle cx="249.0" cy="208.0" r="17.0" fill="white" stroke="#334155" stroke-width="2"/>
+<text x="249.0" y="246.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" fill="#334155">Изменение готово</text>
+<rect x="335" y="167.0" width="176" height="82" rx="10" fill="#e5f3e8" stroke="#27753d" stroke-width="2"/>
+<circle cx="348" cy="177.0" r="3.5" fill="none" stroke="#27753d"/><path d="M342,190.0 v-4 q6,-8 12,0 v4 M345,184.0 v8 M351,184.0 v8" fill="none" stroke="#27753d" stroke-width="1.2"/>
+<text x="423.0" y="200.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">P1.1 Согласовать</text>
+<text x="423.0" y="218.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">объём и условия</text>
+<text x="423.0" y="236.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">выпуска</text>
+<rect x="555" y="343.0" width="176" height="82" rx="10" fill="#e5f3e8" stroke="#27753d" stroke-width="2"/>
+<circle cx="568" cy="353.0" r="3.5" fill="none" stroke="#27753d"/><path d="M562,366.0 v-4 q6,-8 12,0 v4 M565,360.0 v8 M571,360.0 v8" fill="none" stroke="#27753d" stroke-width="1.2"/>
+<text x="643.0" y="385.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">P1.2 Выполнить CI и</text>
+<text x="643.0" y="403.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">контрактные тесты</text>
+<rect x="775" y="343.0" width="176" height="82" rx="10" fill="#e7f0fc" stroke="#2864a6" stroke-width="2"/>
+<circle cx="788" cy="357.0" r="7" fill="none" stroke="#2864a6"/><circle cx="788" cy="357.0" r="3" fill="none" stroke="#2864a6"/>
+<line x1="794.0" y1="357.0" x2="798.0" y2="357.0" stroke="#2864a6" stroke-width="2"/>
+<line x1="792.2426406871193" y1="361.24264068711926" x2="795.0710678118655" y2="364.0710678118655" stroke="#2864a6" stroke-width="2"/>
+<line x1="788.0" y1="363.0" x2="788.0" y2="367.0" stroke="#2864a6" stroke-width="2"/>
+<line x1="783.7573593128807" y1="361.24264068711926" x2="780.9289321881346" y2="364.0710678118655" stroke="#2864a6" stroke-width="2"/>
+<line x1="782.0" y1="357.0" x2="778.0" y2="357.0" stroke="#2864a6" stroke-width="2"/>
+<line x1="783.7573593128807" y1="352.75735931288074" x2="780.9289321881345" y2="349.9289321881345" stroke="#2864a6" stroke-width="2"/>
+<line x1="788.0" y1="351.0" x2="788.0" y2="347.0" stroke="#2864a6" stroke-width="2"/>
+<line x1="792.2426406871193" y1="352.75735931288074" x2="795.0710678118654" y2="349.9289321881345" stroke="#2864a6" stroke-width="2"/>
+<text x="863.0" y="376.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">P1.N1 Объединить</text>
+<text x="863.0" y="394.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">сведения обоих</text>
+<text x="863.0" y="412.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">журналов</text>
+<polygon points="1019.0,360.0 1043,384.0 1019.0,408.0 995,384.0" fill="#f8fafc" stroke="#475569" stroke-width="2"/><path d="M1012.0,377.0 l14,14 M1012.0,391.0 l14,-14" stroke="#475569" stroke-width="2.5"/>
+<text x="1019.0" y="427.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" fill="#334155">Доказательства полны?</text>
+<rect x="985" y="167.0" width="176" height="82" rx="10" fill="#e7f0fc" stroke="#2864a6" stroke-width="2"/>
+<circle cx="998" cy="177.0" r="3.5" fill="none" stroke="#2864a6"/><path d="M992,190.0 v-4 q6,-8 12,0 v4 M995,184.0 v8 M1001,184.0 v8" fill="none" stroke="#2864a6" stroke-width="1.2"/>
+<text x="1073.0" y="209.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">P1.N2 Блокировать</text>
+<text x="1073.0" y="227.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">расширение canary</text>
+<circle cx="1219.0" cy="208.0" r="17.0" fill="white" stroke="#334155" stroke-width="4"/>
+<text x="1219.0" y="246.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" fill="#334155">Доработка пакета; prod</text>
+<text x="1219.0" y="263.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" fill="#334155">не расширен</text>
+<rect x="1215" y="695.0" width="176" height="82" rx="10" fill="#e5f3e8" stroke="#27753d" stroke-width="2"/>
+<circle cx="1228" cy="705.0" r="3.5" fill="none" stroke="#27753d"/><path d="M1222,718.0 v-4 q6,-8 12,0 v4 M1225,712.0 v8 M1231,712.0 v8" fill="none" stroke="#27753d" stroke-width="1.2"/>
+<text x="1303.0" y="737.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">P1.4 Выпустить и</text>
+<text x="1303.0" y="755.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">наблюдать canary</text>
+<polygon points="1454.0,712.0 1478,736.0 1454.0,760.0 1430,736.0" fill="#f8fafc" stroke="#475569" stroke-width="2"/><path d="M1447.0,729.0 l14,14 M1447.0,743.0 l14,-14" stroke="#475569" stroke-width="2.5"/>
+<text x="1454.0" y="779.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" fill="#334155">Есть инцидент?</text>
+<rect x="1620" y="167.0" width="176" height="82" rx="10" fill="#e5f3e8" stroke="#27753d" stroke-width="2"/>
+<circle cx="1633" cy="177.0" r="3.5" fill="none" stroke="#27753d"/><path d="M1627,190.0 v-4 q6,-8 12,0 v4 M1630,184.0 v8 M1636,184.0 v8" fill="none" stroke="#27753d" stroke-width="1.2"/>
+<text x="1708.0" y="209.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">P1.5 Принять новый</text>
+<text x="1708.0" y="227.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">маршрут заказов</text>
+<circle cx="1869.0" cy="208.0" r="17.0" fill="white" stroke="#334155" stroke-width="4"/>
+<text x="1869.0" y="246.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" fill="#334155">Маршрут принят</text>
+<rect x="1620" y="695.0" width="176" height="82" rx="10" fill="#e5f3e8" stroke="#27753d" stroke-width="2"/>
+<circle cx="1633" cy="705.0" r="3.5" fill="none" stroke="#27753d"/><path d="M1627,718.0 v-4 q6,-8 12,0 v4 M1630,712.0 v8 M1636,712.0 v8" fill="none" stroke="#27753d" stroke-width="1.2"/>
+<text x="1708.0" y="728.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">P1.8 Разобрать</text>
+<text x="1708.0" y="746.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">инцидент по реестру и</text>
+<text x="1708.0" y="764.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">логам</text>
+<rect x="1850" y="871.0" width="176" height="82" rx="10" fill="#e5f3e8" stroke="#27753d" stroke-width="2"/>
+<circle cx="1863" cy="881.0" r="3.5" fill="none" stroke="#27753d"/><path d="M1857,894.0 v-4 q6,-8 12,0 v4 M1860,888.0 v8 M1866,888.0 v8" fill="none" stroke="#27753d" stroke-width="1.2"/>
+<text x="1938.0" y="904.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">P1.9 Утвердить</text>
+<text x="1938.0" y="922.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">действие без ответа</text>
+<text x="1938.0" y="940.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">агента</text>
+<rect x="2080" y="695.0" width="176" height="82" rx="10" fill="#e5f3e8" stroke="#27753d" stroke-width="2"/>
+<circle cx="2093" cy="705.0" r="3.5" fill="none" stroke="#27753d"/><path d="M2087,718.0 v-4 q6,-8 12,0 v4 M2090,712.0 v8 M2096,712.0 v8" fill="none" stroke="#27753d" stroke-width="1.2"/>
+<text x="2168.0" y="737.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">P1.10 Восстановить и</text>
+<text x="2168.0" y="755.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">сверить заказы</text>
+<rect x="2310" y="871.0" width="176" height="82" rx="10" fill="#e7f0fc" stroke="#2864a6" stroke-width="2"/>
+<circle cx="2323" cy="881.0" r="3.5" fill="none" stroke="#2864a6"/><path d="M2317,894.0 v-4 q6,-8 12,0 v4 M2320,888.0 v8 M2326,888.0 v8" fill="none" stroke="#2864a6" stroke-width="1.2"/>
+<text x="2398.0" y="913.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">P1.N3 Сохранить</text>
+<text x="2398.0" y="931.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="15" fill="#132435">эталон и трудозатраты</text>
+<circle cx="2549.0" cy="912.0" r="17.0" fill="white" stroke="#334155" stroke-width="4"/>
+<text x="2549.0" y="950.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" fill="#334155">Сервис восстановлен;</text>
+<text x="2549.0" y="967.0" text-anchor="middle" font-family="DejaVu Sans,Arial" font-size="14" fill="#334155">данные для shadow</text>
+<text x="28" y="1060" font-family="DejaVu Sans,Arial" font-size="14" fill="#64748b">Коды действий соответствуют таблицам потерь и контрольным процедурам отчёта. Цвет — аналитическая разметка, а не тип BPMN-элемента.</text></svg>
