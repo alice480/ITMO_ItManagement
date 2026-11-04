@@ -1,0 +1,20 @@
+{
+  "forecast_id": "LAMODA-P1-P2-2026-12-v1",
+  "period_start": "2026-12-01",
+  "period_end": "2026-12-31",
+  "data_cutoff": "2026-11-03",
+  "scope": "P1 incident response; P2 protected infrastructure changes",
+  "prediction": {
+    "gross_recognized_finops_savings_rub": 0,
+    "mandatory_agent_reviews_on_incident_critical_path": 0,
+    "new_volume_commitments_without_exit_approval": 0,
+    "normalized_monthly_cloud_reference_rub": 116666666.66666667,
+    "normalized_monthly_transition_premium_rub": 12500000
+  },
+  "basis": "The majority of changes are blocked or postponed; no validated execution dates or positive savings are supplied. The incident commander requested removal of the agent from the operational runbook.",
+  "conditions": "No separately authorized infrastructure release or tariff change. Equal-volume monthly reference is an accounting scenario, not a prediction of sale-period demand.",
+  "falsification": "Any implemented and financially verified optimization with positive realized savings falsifies the point prediction of zero. Any compulsory agent review before restoration falsifies the process prediction. Do not defer safe optimization to make the prediction true.",
+  "review_after": "2027-01-07",
+  "fact": null,
+  "operational_history_validated": false
+}

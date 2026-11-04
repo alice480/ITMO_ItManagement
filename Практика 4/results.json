@@ -1,0 +1,172 @@
+{
+  "rates": {
+    "engineer": 3000.0,
+    "analyst": 2700.0,
+    "lead": 3200.0
+  },
+  "phase0": [
+    [
+      "mapping",
+      28,
+      2700.0
+    ],
+    [
+      "connectors",
+      48,
+      3000.0
+    ],
+    [
+      "historical_exports",
+      14,
+      2700.0
+    ],
+    [
+      "independent_reconciliation",
+      7,
+      3000.0
+    ],
+    [
+      "decision_sessions",
+      6,
+      3200.0
+    ]
+  ],
+  "phase1": [
+    [
+      "dashboard",
+      24,
+      2700.0
+    ],
+    [
+      "metric_passports",
+      13,
+      2700.0
+    ],
+    [
+      "model_checks",
+      16,
+      3000.0
+    ],
+    [
+      "paired_case_review",
+      61.0,
+      3000.0
+    ],
+    [
+      "finops_pilot_engineering",
+      8,
+      3000.0
+    ],
+    [
+      "finops_pilot_review_engineer",
+      4,
+      3000.0
+    ],
+    [
+      "finops_pilot_review_analyst",
+      4,
+      2700.0
+    ],
+    [
+      "handover",
+      8,
+      2700.0
+    ],
+    [
+      "model_calls",
+      65,
+      26.4
+    ]
+  ],
+  "phase0_total": 297600.0,
+  "phase1_total": 401016.0,
+  "oneoff_total": 698616.0,
+  "independent_cases": 59,
+  "regression_cases": 2,
+  "case_count": 61,
+  "upper_error_bound": 0.049507609888227,
+  "token_cost_cap": 26.4,
+  "fixed_month": 57705.6,
+  "change_cost": 11726.4,
+  "changes_month_cost": 46905.6,
+  "scenarios": [
+    {
+      "name": "without_changes",
+      "s": 0.0,
+      "delay_months": 12,
+      "gross": 0.0,
+      "oneoff": 0.0,
+      "recurring": 0.0,
+      "net": 0.0,
+      "net_pct_cloud": 0.0,
+      "gross_pct_cloud": 0.0,
+      "uncovered_delta": 150000000.0,
+      "payback_months": null,
+      "cloud_bill": 1400000000.0
+    },
+    {
+      "name": "expected_conditional",
+      "s": 0.05,
+      "delay_months": 3,
+      "gross": 52500000.0,
+      "oneoff": 698616.0,
+      "recurring": 1114617.5999999999,
+      "net": 50686766.4,
+      "net_pct_cloud": 3.6204833142857145,
+      "gross_pct_cloud": 3.75,
+      "uncovered_delta": 99313233.6,
+      "payback_months": 3.1521688047894147,
+      "cloud_bill": 1347500000.0
+    },
+    {
+      "name": "pessimistic_stop_at_gate0",
+      "s": 0.0,
+      "delay_months": 12,
+      "gross": 0.0,
+      "oneoff": 297600.0,
+      "recurring": 0.0,
+      "net": -297600.0,
+      "net_pct_cloud": -0.021257142857142856,
+      "gross_pct_cloud": 0.0,
+      "uncovered_delta": 150297600.0,
+      "payback_months": null,
+      "cloud_bill": 1400000000.0
+    }
+  ],
+  "history": {
+    "train_year": 2024,
+    "holdout_year": 2025,
+    "train_revenue": 107236015000,
+    "forecast_revenue": 107236015000,
+    "actual_revenue": 117587001000,
+    "signed_error": -10350986000,
+    "ape_pct": 8.802831870845996,
+    "hourly_pred_2025": 12241554.223744292,
+    "hourly_actual_2025": 13423173.630136987
+  },
+  "break_even_s_pct": 0.17268891428571426,
+  "annual_base": 1000000000.0,
+  "annual_transition": 1400000000.0,
+  "annual_alt": 1250000000.0,
+  "target_savings": 70000000.0,
+  "savings_for_surcharge_pct": 10.714285714285714,
+  "hourly_revenue_reference": 13424657.534246575,
+  "exposure_20h": 268493150.6849315,
+  "historical_export_wait": {
+    "mean_min": 30,
+    "p50_min": 30,
+    "p95_min": 57,
+    "max_min": 60
+  },
+  "current_agent_errors": 2,
+  "current_agent_drafts_checked": null,
+  "observed_review_minutes": null,
+  "operational_history_validated": false,
+  "new_product_revenue": {
+    "recognized_revenue_rub": null,
+    "contribution_margin_rate": null,
+    "attributable_cost_rub": null,
+    "net_contribution_rub": null,
+    "status": "ledger_and_product_scope_not_provided"
+  }
+}
