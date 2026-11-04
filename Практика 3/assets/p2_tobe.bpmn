@@ -1,0 +1,370 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="p2_tobe_Definitions" targetNamespace="urn:lamoda:cto:scenario-review:2026">
+  <bpmn:collaboration id="p2_tobe_Collaboration">
+    <bpmn:participant id="p2_tobe_Pool" name="Lamoda" processRef="p2_tobe_Process"/>
+  </bpmn:collaboration>
+  <bpmn:process id="p2_tobe_Process" name="P2 · TO-BE · Допуск по мощности, календарю и стоимости выхода" isExecutable="false">
+    <bpmn:laneSet id="p2_tobe_LaneSet">
+      <bpmn:lane id="p2_tobe_Lane0" name="FinOps / Finance">
+        <bpmn:flowNodeRef>p2_tobe_start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>p2_tobe_approve</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>p2_tobe_verify</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>p2_tobe_endok</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="p2_tobe_Lane1" name="Агент / сбор данных">
+        <bpmn:flowNodeRef>p2_tobe_data</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="p2_tobe_Lane2" name="Service Owner / SRE">
+        <bpmn:flowNodeRef>p2_tobe_capacity</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>p2_tobe_capgate</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>p2_tobe_apply</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="p2_tobe_Lane3" name="Change Manager">
+        <bpmn:flowNodeRef>p2_tobe_freeze</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>p2_tobe_frozen</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>p2_tobe_defer</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>p2_tobe_enddefer</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>p2_tobe_recheck</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>p2_tobe_valid</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>p2_tobe_invalid</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>p2_tobe_endinvalid</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="p2_tobe_Lane4" name="CRO / Exit Readiness">
+        <bpmn:flowNodeRef>p2_tobe_risk</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>p2_tobe_riskgate</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>p2_tobe_reject</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>p2_tobe_endreject</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="p2_tobe_start" name="Новая или отложенная рекомендация">
+      <bpmn:outgoing>p2_tobe_F0</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="p2_tobe_data" name="P2.N1 Собрать ресурсы, окно, тариф и нагрузку">
+      <bpmn:incoming>p2_tobe_F0</bpmn:incoming>
+      <bpmn:outgoing>p2_tobe_F1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="p2_tobe_freeze" name="P2.N2 Проверить допустимость до согласования">
+      <bpmn:incoming>p2_tobe_F1</bpmn:incoming>
+      <bpmn:outgoing>p2_tobe_F2</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="p2_tobe_frozen" name="Окно закрыто?">
+      <bpmn:incoming>p2_tobe_F2</bpmn:incoming>
+      <bpmn:outgoing>p2_tobe_F3</bpmn:outgoing>
+      <bpmn:outgoing>p2_tobe_F5</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="p2_tobe_defer" name="P2.5 Зафиксировать отсрочку; эффект не признавать">
+      <bpmn:incoming>p2_tobe_F3</bpmn:incoming>
+      <bpmn:outgoing>p2_tobe_F4</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="p2_tobe_enddefer" name="Ожидать открытия окна; повторить проверку">
+      <bpmn:incoming>p2_tobe_F4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="p2_tobe_capacity" name="P2.N3 Подтвердить запас мощности и откат">
+      <bpmn:incoming>p2_tobe_F5</bpmn:incoming>
+      <bpmn:outgoing>p2_tobe_F6</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="p2_tobe_capgate" name="Мощность достаточна?">
+      <bpmn:incoming>p2_tobe_F6</bpmn:incoming>
+      <bpmn:outgoing>p2_tobe_F7</bpmn:outgoing>
+      <bpmn:outgoing>p2_tobe_F19</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="p2_tobe_risk" name="P2.N4 Рассчитать обязательства и exit cost">
+      <bpmn:incoming>p2_tobe_F7</bpmn:incoming>
+      <bpmn:outgoing>p2_tobe_F8</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:exclusiveGateway id="p2_tobe_riskgate" name="Лимит выхода соблюдён?">
+      <bpmn:incoming>p2_tobe_F8</bpmn:incoming>
+      <bpmn:outgoing>p2_tobe_F9</bpmn:outgoing>
+      <bpmn:outgoing>p2_tobe_F11</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="p2_tobe_reject" name="P2.7 Отклонить; сохранить доказательства">
+      <bpmn:incoming>p2_tobe_F9</bpmn:incoming>
+      <bpmn:outgoing>p2_tobe_F10</bpmn:outgoing>
+      <bpmn:incoming>p2_tobe_F19</bpmn:incoming>
+    </bpmn:userTask>
+    <bpmn:endEvent id="p2_tobe_endreject" name="Изменение отклонено">
+      <bpmn:incoming>p2_tobe_F10</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="p2_tobe_approve" name="P2.N5 Согласовать чистый эффект и дату">
+      <bpmn:incoming>p2_tobe_F11</bpmn:incoming>
+      <bpmn:outgoing>p2_tobe_F12</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="p2_tobe_recheck" name="P2.N6 Повторно проверить окно и версию пакета">
+      <bpmn:incoming>p2_tobe_F12</bpmn:incoming>
+      <bpmn:outgoing>p2_tobe_F13</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="p2_tobe_valid" name="Допуск актуален?">
+      <bpmn:incoming>p2_tobe_F13</bpmn:incoming>
+      <bpmn:outgoing>p2_tobe_F14</bpmn:outgoing>
+      <bpmn:outgoing>p2_tobe_F16</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="p2_tobe_invalid" name="P2.N7 Вернуть на пересмотр; ничего не менять">
+      <bpmn:incoming>p2_tobe_F14</bpmn:incoming>
+      <bpmn:outgoing>p2_tobe_F15</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="p2_tobe_endinvalid" name="Новая итерация допуска">
+      <bpmn:incoming>p2_tobe_F15</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="p2_tobe_apply" name="P2.8 Применить, наблюдать; при сбое откатить">
+      <bpmn:incoming>p2_tobe_F16</bpmn:incoming>
+      <bpmn:outgoing>p2_tobe_F17</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="p2_tobe_verify" name="P2.9 Сверить счета, SLO и чистый эффект">
+      <bpmn:incoming>p2_tobe_F17</bpmn:incoming>
+      <bpmn:outgoing>p2_tobe_F18</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="p2_tobe_endok" name="Результат принят Finance и SRE">
+      <bpmn:incoming>p2_tobe_F18</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="p2_tobe_F0" sourceRef="p2_tobe_start" targetRef="p2_tobe_data"/>
+    <bpmn:sequenceFlow id="p2_tobe_F1" sourceRef="p2_tobe_data" targetRef="p2_tobe_freeze"/>
+    <bpmn:sequenceFlow id="p2_tobe_F2" sourceRef="p2_tobe_freeze" targetRef="p2_tobe_frozen"/>
+    <bpmn:sequenceFlow id="p2_tobe_F3" sourceRef="p2_tobe_frozen" targetRef="p2_tobe_defer" name="Да"/>
+    <bpmn:sequenceFlow id="p2_tobe_F4" sourceRef="p2_tobe_defer" targetRef="p2_tobe_enddefer"/>
+    <bpmn:sequenceFlow id="p2_tobe_F5" sourceRef="p2_tobe_frozen" targetRef="p2_tobe_capacity" name="Нет"/>
+    <bpmn:sequenceFlow id="p2_tobe_F6" sourceRef="p2_tobe_capacity" targetRef="p2_tobe_capgate"/>
+    <bpmn:sequenceFlow id="p2_tobe_F7" sourceRef="p2_tobe_capgate" targetRef="p2_tobe_risk" name="Да"/>
+    <bpmn:sequenceFlow id="p2_tobe_F8" sourceRef="p2_tobe_risk" targetRef="p2_tobe_riskgate"/>
+    <bpmn:sequenceFlow id="p2_tobe_F9" sourceRef="p2_tobe_riskgate" targetRef="p2_tobe_reject" name="Нет"/>
+    <bpmn:sequenceFlow id="p2_tobe_F10" sourceRef="p2_tobe_reject" targetRef="p2_tobe_endreject"/>
+    <bpmn:sequenceFlow id="p2_tobe_F11" sourceRef="p2_tobe_riskgate" targetRef="p2_tobe_approve" name="Да"/>
+    <bpmn:sequenceFlow id="p2_tobe_F12" sourceRef="p2_tobe_approve" targetRef="p2_tobe_recheck"/>
+    <bpmn:sequenceFlow id="p2_tobe_F13" sourceRef="p2_tobe_recheck" targetRef="p2_tobe_valid"/>
+    <bpmn:sequenceFlow id="p2_tobe_F14" sourceRef="p2_tobe_valid" targetRef="p2_tobe_invalid" name="Нет"/>
+    <bpmn:sequenceFlow id="p2_tobe_F15" sourceRef="p2_tobe_invalid" targetRef="p2_tobe_endinvalid"/>
+    <bpmn:sequenceFlow id="p2_tobe_F16" sourceRef="p2_tobe_valid" targetRef="p2_tobe_apply" name="Да"/>
+    <bpmn:sequenceFlow id="p2_tobe_F17" sourceRef="p2_tobe_apply" targetRef="p2_tobe_verify"/>
+    <bpmn:sequenceFlow id="p2_tobe_F18" sourceRef="p2_tobe_verify" targetRef="p2_tobe_endok"/>
+    <bpmn:sequenceFlow id="p2_tobe_F19" sourceRef="p2_tobe_capgate" targetRef="p2_tobe_reject" name="Нет"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="p2_tobe_Diagram">
+    <bpmndi:BPMNPlane id="p2_tobe_Plane" bpmnElement="p2_tobe_Collaboration">
+      <bpmndi:BPMNShape id="p2_tobe_Pool_di" bpmnElement="p2_tobe_Pool" isHorizontal="true">
+        <dc:Bounds x="20" y="120" width="2958" height="880"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_Lane0_di" bpmnElement="p2_tobe_Lane0" isHorizontal="true">
+        <dc:Bounds x="55" y="120" width="2923" height="176"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_Lane1_di" bpmnElement="p2_tobe_Lane1" isHorizontal="true">
+        <dc:Bounds x="55" y="296" width="2923" height="176"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_Lane2_di" bpmnElement="p2_tobe_Lane2" isHorizontal="true">
+        <dc:Bounds x="55" y="472" width="2923" height="176"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_Lane3_di" bpmnElement="p2_tobe_Lane3" isHorizontal="true">
+        <dc:Bounds x="55" y="648" width="2923" height="176"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_Lane4_di" bpmnElement="p2_tobe_Lane4" isHorizontal="true">
+        <dc:Bounds x="55" y="824" width="2923" height="176"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_start_di" bpmnElement="p2_tobe_start" bioc:fill="#e5f3e8" bioc:stroke="#27753d">
+        <dc:Bounds x="230" y="189.0" width="38" height="38"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="174.0" y="234.0" width="150" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_data_di" bpmnElement="p2_tobe_data" bioc:fill="#e7f0fc" bioc:stroke="#2864a6">
+        <dc:Bounds x="335" y="343.0" width="176" height="82"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_freeze_di" bpmnElement="p2_tobe_freeze" bioc:fill="#e7f0fc" bioc:stroke="#2864a6">
+        <dc:Bounds x="555" y="695.0" width="176" height="82"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_frozen_di" bpmnElement="p2_tobe_frozen" isMarkerVisible="true" bioc:fill="#e5f3e8" bioc:stroke="#27753d">
+        <dc:Bounds x="770" y="712.0" width="48" height="48"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="719.0" y="767.0" width="150" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_defer_di" bpmnElement="p2_tobe_defer" bioc:fill="#e5f3e8" bioc:stroke="#27753d">
+        <dc:Bounds x="940" y="695.0" width="176" height="82"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_enddefer_di" bpmnElement="p2_tobe_enddefer" bioc:fill="#e5f3e8" bioc:stroke="#27753d">
+        <dc:Bounds x="1160" y="717.0" width="38" height="38"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1104.0" y="762.0" width="150" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_capacity_di" bpmnElement="p2_tobe_capacity" bioc:fill="#e7f0fc" bioc:stroke="#2864a6">
+        <dc:Bounds x="940" y="519.0" width="176" height="82"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_capgate_di" bpmnElement="p2_tobe_capgate" isMarkerVisible="true" bioc:fill="#e5f3e8" bioc:stroke="#27753d">
+        <dc:Bounds x="1160" y="536.0" width="48" height="48"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1109.0" y="591.0" width="150" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_risk_di" bpmnElement="p2_tobe_risk" bioc:fill="#e7f0fc" bioc:stroke="#2864a6">
+        <dc:Bounds x="1370" y="871.0" width="176" height="82"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_riskgate_di" bpmnElement="p2_tobe_riskgate" isMarkerVisible="true" bioc:fill="#e5f3e8" bioc:stroke="#27753d">
+        <dc:Bounds x="1580" y="888.0" width="48" height="48"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1529.0" y="943.0" width="150" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_reject_di" bpmnElement="p2_tobe_reject" bioc:fill="#e5f3e8" bioc:stroke="#27753d">
+        <dc:Bounds x="1780" y="871.0" width="176" height="82"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_endreject_di" bpmnElement="p2_tobe_endreject" bioc:fill="#e5f3e8" bioc:stroke="#27753d">
+        <dc:Bounds x="2000" y="893.0" width="38" height="38"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1944.0" y="938.0" width="150" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_approve_di" bpmnElement="p2_tobe_approve" bioc:fill="#e7f0fc" bioc:stroke="#2864a6">
+        <dc:Bounds x="1780" y="167.0" width="176" height="82"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_recheck_di" bpmnElement="p2_tobe_recheck" bioc:fill="#e7f0fc" bioc:stroke="#2864a6">
+        <dc:Bounds x="2000" y="695.0" width="176" height="82"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_valid_di" bpmnElement="p2_tobe_valid" isMarkerVisible="true" bioc:fill="#e5f3e8" bioc:stroke="#27753d">
+        <dc:Bounds x="2210" y="712.0" width="48" height="48"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2159.0" y="767.0" width="150" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_invalid_di" bpmnElement="p2_tobe_invalid" bioc:fill="#e7f0fc" bioc:stroke="#2864a6">
+        <dc:Bounds x="2390" y="695.0" width="176" height="82"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_endinvalid_di" bpmnElement="p2_tobe_endinvalid" bioc:fill="#e5f3e8" bioc:stroke="#27753d">
+        <dc:Bounds x="2610" y="717.0" width="38" height="38"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2554.0" y="762.0" width="150" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_apply_di" bpmnElement="p2_tobe_apply" bioc:fill="#e5f3e8" bioc:stroke="#27753d">
+        <dc:Bounds x="2390" y="519.0" width="176" height="82"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_verify_di" bpmnElement="p2_tobe_verify" bioc:fill="#e5f3e8" bioc:stroke="#27753d">
+        <dc:Bounds x="2610" y="167.0" width="176" height="82"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="p2_tobe_endok_di" bpmnElement="p2_tobe_endok" bioc:fill="#e5f3e8" bioc:stroke="#27753d">
+        <dc:Bounds x="2830" y="189.0" width="38" height="38"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2774.0" y="234.0" width="150" height="42"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="p2_tobe_F0_di" bpmnElement="p2_tobe_F0">
+        <di:waypoint x="268" y="208.0"/>
+        <di:waypoint x="301.5" y="208.0"/>
+        <di:waypoint x="301.5" y="384.0"/>
+        <di:waypoint x="335" y="384.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="p2_tobe_F1_di" bpmnElement="p2_tobe_F1">
+        <di:waypoint x="511" y="384.0"/>
+        <di:waypoint x="533.0" y="384.0"/>
+        <di:waypoint x="533.0" y="736.0"/>
+        <di:waypoint x="555" y="736.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="p2_tobe_F2_di" bpmnElement="p2_tobe_F2">
+        <di:waypoint x="731" y="736.0"/>
+        <di:waypoint x="770" y="736.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="p2_tobe_F3_di" bpmnElement="p2_tobe_F3">
+        <di:waypoint x="818" y="736.0"/>
+        <di:waypoint x="940" y="736.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="857.0" y="712.0" width="44" height="20"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="p2_tobe_F4_di" bpmnElement="p2_tobe_F4">
+        <di:waypoint x="1116" y="736.0"/>
+        <di:waypoint x="1160" y="736.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="p2_tobe_F5_di" bpmnElement="p2_tobe_F5">
+        <di:waypoint x="794" y="712"/>
+        <di:waypoint x="794" y="560"/>
+        <di:waypoint x="940" y="560"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="797.0" y="620.0" width="44" height="20"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="p2_tobe_F6_di" bpmnElement="p2_tobe_F6">
+        <di:waypoint x="1116" y="560.0"/>
+        <di:waypoint x="1160" y="560.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="p2_tobe_F7_di" bpmnElement="p2_tobe_F7">
+        <di:waypoint x="1208" y="560.0"/>
+        <di:waypoint x="1289.0" y="560.0"/>
+        <di:waypoint x="1289.0" y="912.0"/>
+        <di:waypoint x="1370" y="912.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1226.5" y="536.0" width="44" height="20"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="p2_tobe_F8_di" bpmnElement="p2_tobe_F8">
+        <di:waypoint x="1546" y="912.0"/>
+        <di:waypoint x="1580" y="912.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="p2_tobe_F9_di" bpmnElement="p2_tobe_F9">
+        <di:waypoint x="1628" y="912.0"/>
+        <di:waypoint x="1780" y="912.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1682.0" y="888.0" width="44" height="20"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="p2_tobe_F10_di" bpmnElement="p2_tobe_F10">
+        <di:waypoint x="1956" y="912.0"/>
+        <di:waypoint x="2000" y="912.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="p2_tobe_F11_di" bpmnElement="p2_tobe_F11">
+        <di:waypoint x="1604" y="888"/>
+        <di:waypoint x="1604" y="208"/>
+        <di:waypoint x="1780" y="208"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1607.0" y="532.0" width="44" height="20"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="p2_tobe_F12_di" bpmnElement="p2_tobe_F12">
+        <di:waypoint x="1956" y="208.0"/>
+        <di:waypoint x="1978.0" y="208.0"/>
+        <di:waypoint x="1978.0" y="736.0"/>
+        <di:waypoint x="2000" y="736.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="p2_tobe_F13_di" bpmnElement="p2_tobe_F13">
+        <di:waypoint x="2176" y="736.0"/>
+        <di:waypoint x="2210" y="736.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="p2_tobe_F14_di" bpmnElement="p2_tobe_F14">
+        <di:waypoint x="2258" y="736.0"/>
+        <di:waypoint x="2390" y="736.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2302.0" y="712.0" width="44" height="20"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="p2_tobe_F15_di" bpmnElement="p2_tobe_F15">
+        <di:waypoint x="2566" y="736.0"/>
+        <di:waypoint x="2610" y="736.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="p2_tobe_F16_di" bpmnElement="p2_tobe_F16">
+        <di:waypoint x="2234" y="712"/>
+        <di:waypoint x="2234" y="560"/>
+        <di:waypoint x="2390" y="560"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2237.0" y="620.0" width="44" height="20"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="p2_tobe_F17_di" bpmnElement="p2_tobe_F17">
+        <di:waypoint x="2566" y="560.0"/>
+        <di:waypoint x="2588.0" y="560.0"/>
+        <di:waypoint x="2588.0" y="208.0"/>
+        <di:waypoint x="2610" y="208.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="p2_tobe_F18_di" bpmnElement="p2_tobe_F18">
+        <di:waypoint x="2786" y="208.0"/>
+        <di:waypoint x="2830" y="208.0"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="p2_tobe_F19_di" bpmnElement="p2_tobe_F19">
+        <di:waypoint x="1184" y="584"/>
+        <di:waypoint x="1184" y="620"/>
+        <di:waypoint x="1280" y="620"/>
+        <di:waypoint x="1280" y="975"/>
+        <di:waypoint x="1868" y="975"/>
+        <di:waypoint x="1868" y="953"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1187.0" y="586.0" width="44" height="20"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
